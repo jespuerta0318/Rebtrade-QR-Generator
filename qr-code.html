@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebtrade QR Generator</title>
+    <link href="reb-logo.png" rel="icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            
+        }
+        .left-side {
+            width: 50%;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .right-side {
+            width: 50%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            width: 80%;
+            background-color: #fff;
+            border: 10px solid #990000;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 1px;
+        }
+        .form-container h1 {
+            text-align: center;
+            color: #990000;
+            margin-bottom: 20px;
+        }
+        form label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        form input {
+            width: 97%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        form button {
+            background-color: #990000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        form button:hover {
+            background-color: #cc0000;
+        }
+
+        @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+        height: 50vh; /* Adjust height for smaller screens */
+    }
+
+    .logo {
+        font-size: 32px; /* Smaller text on smaller screens */
+    }
+
+    .form-container {
+        width: 90%;
+        padding: 15px;
+        border: 8px solid #990000; /* Reduce border width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .left-side, .right-side {
+        height: auto; /* Allow height to adjust dynamically */
+    }
+
+    .logo {
+        font-size: 24px; /* Smaller text on extra small screens */
+    }
+
+    .form-container {
+        width: 95%;
+        padding: 10px;
+        border: 6px solid #990000; /* Further reduce border width */
+    }
+
+    form input {
+        width: 95%; /* Ensure inputs are full width on small screens */
+    }
+
+    form button {
+        padding: 8px 15px;
+        font-size: 14px; /* Smaller button text on extra small screens */
+    }
+}
+        .qr-container {
+            margin-top: 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .qr-item {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    padding: 5px; /* Reduced padding */
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 300px; /* Allow flexible height */
+    position: relative;
+    
+}
+
+.qr-code {
+    margin: 0 auto; /* Center the QR code */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0; /* Remove bottom margin */
+    margin-top: 5px; /* Reduce top margin */
+    height: 200px; /* Ensure height is maintained */
+}
+@media (max-width: 768px) {
+    .qr-item {
+        width: 150px; /* Slightly smaller QR item for tablet screens */
+        height: 250px;
+    }
+
+    .qr-code {
+        height: 150px; /* Reduce the height of the QR code */
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items in the column */
+        margin-top: 100%;
+    }
+
+    .qr-item {
+        display: inline-block;
+    text-align: center;
+    margin: 10px;
+    padding: 5px; /* Reduced padding */
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 300px; /* Allow flexible height */
+    position: relative;
+
+    }
+
+    .qr-code {
+        width: 100px; /* Reduce QR code size for mobile */
+        height: 100px;
+    }
+
+    .header, .subheader, .footer {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}
+.header, .subheader, .footer {
+    margin-top: 3px; /* Fine-tune space between elements */
+    margin-bottom: 3px; /* Fine-tune space between elements */
+}
+        .header {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: rgb(99, 4, 4);
+        }
+        .subheader {
+            font-size: 11px;
+            margin-bottom: 10px;
+            color: rgb(23, 15, 3);
+        }
+        .footer {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            font-size: 12px;
+            text-align: center;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .button-container button {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        @media print {
+    /* Hide everything except the QR templates */
+    body, html {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container, .left-side, .right-side, .form-container, form, button {
+        display: none; /* Hide form and other elements */
+    }
+
+    .qr-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 QR codes per row */
+        grid-gap: 10px; /* Space between QR code cards */
+        margin: 10px;
+        padding: 0;
+    }
+
+    .qr-item {
+        display: inline-block;
+        page-break-inside: avoid; /* Prevent splitting across pages */
+        border: 1px solid #ccc;
+        width: 150px;  /* Adjusted width */
+        height: 250px; /* Adjusted height */
+        padding: 10px; /* Reduced padding for tighter layout */
+        background: repeating-linear-gradient(
+            45deg,
+            rgba(153, 0, 0, 1),
+            rgba(153, 0, 0, 1) 10px,
+            rgba(255, 255, 255, 1) 10px,
+            rgba(255, 255, 255, 1) 20px
+        ); /* Diagonal striped pattern */
+        border: 3px solid rgba(151, 15, 15, 0.5); /* Light border for the container */
+    }
+
+    .button-container {
+        display: none; /* Hide edit and delete buttons */
+    }
+ /* Hide the back-arrow in print */
+ .back-arrow {
+        display: none;
+    }
+
+    .qr-code {
+        display: block;
+        margin: 0 auto;
+        width: 128px; /* Keep QR code size */
+        height: 128px;
+        background: repeating-linear-gradient(
+            45deg,
+            rgba(153, 0, 0, 0.1),
+            rgba(153, 0, 0, 0.1) 10px,
+            rgba(255, 255, 255, 0.1) 10px,
+            rgba(255, 255, 255, 0.1) 20px
+        ); /* Diagonal striped pattern */
+        border: 2px solid rgba(153, 0, 0, 0.3); /* Light border for the container */
+    }
+
+    .header, .subheader, .footer {
+        margin-top: 3px; /* Minimized space between elements */
+        margin-bottom: 3px;
+        font-size: 11px; /* Adjust font size for better fit */
+    }
+}
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 900; /* Ensure it is above other elements */
+}
+
+.back-arrow a {
+    font-size: 13px;
+    color: #990000; /* Match your theme color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px; /* Add some padding for better clickability */
+    /* border: 2px solid #990000;
+    border-radius: 5px; */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.back-arrow a:hover {
+    background-color: rgba(153, 0, 0, 0.1); /* Change background on hover */
+}
+.branch-select {
+            margin: 10px;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+   
+    
+    <div class="container">
+        <!-- Left Side: Logo -->
+        <div class="left-side">
+            <div class="logo">Rebtrade International Corporation</div>
+        </div>
+
+        <!-- Right Side: QR Form -->
+        <div class="right-side">
+            <div class="form-container">
+                <div class="back-arrow">
+                    <a href="index.html">&#8592; Back to Homepage</a>
+                </div>
+                <h1>QR Code Generator</h1>
+                 <!-- Branch Selection Dropdown -->
+                 <label for="branch" style="font-weight: bold;">Select Branch:</label>
+                 <select id="branch" class="branch-select">
+                     <option value="P">Pulilan Rebtrade</option>
+                     <option value="S">Ortigas Sales Rebtrade</option>
+                 </select>
+                <form id="qrForm">
+                    <label for="desc">Description:</label>
+                    <input type="text" id="desc" name="desc" required><br><br>
+
+                    <label for="user">Accountable User:</label>
+                    <input type="text" id="user" name="user" required><br><br>
+
+                    <label for="loc">Location:</label>
+                    <input type="text" id="loc" name="loc" required><br><br>
+
+                    <label for="dep">Department:</label>
+                    <input type="text" id="dep" name="dep" required><br><br>
+
+                    <label for="serial">Serial No:</label>
+                    <input type="text" id="serial" name="serial" required><br><br>
+
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required><br><br>
+
+                    <label for="id">Product ID:</label>
+                    <input type="text" id="id" name="id" required><br><br>
+
+                    <button type="submit">Generate QR Code</button>
+                    <button type="button" id="printBtn">Print QR Codes</button>
+                    <button type="button" id="resetBtn">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="qr-container print-area" id="qrContainer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+$(document).ready(function() {
+    let itemCount = 1; // Counter for item numbers
+    let qrItems = JSON.parse(localStorage.getItem('qrItems')) || []; // Load from localStorage
+    let deletedItemNos = []; // Array to store deleted item numbers
+    let isEditing = false; // Track if we're editing an existing item
+    let editingItemNo = null; // Track which item number is being edited
+    let editingIndex = null; // Track the index of the item being edited
+
+    // Function to generate QR Code (same as your original)
+    function generateQRCode(brand, serial, desc, user, loc, dep, count, id, branchSuffix) {
+        let qrDiv = $('<div class="qr-item"></div>');
+        let itemNo = "CE-" + String(count).padStart(5, '0') + branchSuffix;
+        let qrData = 
+            `Description: ${desc}\nAccountable User: ${user}\nLocation: ${loc}\nDepartment: ${dep}\nSerial No: ${serial}\nBrand: ${brand}\nProduct ID: ${id}\nItem No: ${itemNo}`;
+
+        let qrCodeDiv = $('<div class="qr-code"></div>');
+        new QRCode(qrCodeDiv[0], { text: qrData, width: 128, height: 128 });
+
+        let header = $('<div class="header">Rebtrade International Corporation</div>');
+        let subheader = $('<div class="subheader">Rebtrade Property</div>');
+        let footer = $('<div class="footer">Item No: ' + itemNo + '</div>');
+        let buttonContainer = $('<div class="button-container"></div>');
+        let editButton = $('<button>Edit</button>');
+        let deleteButton = $('<button>Delete</button>');
+
+        buttonContainer.append(editButton, deleteButton);
+        qrDiv.append(header, subheader, qrCodeDiv, footer, buttonContainer);
+        $('#qrContainer').append(qrDiv);
+
+        // Edit and delete functionality
+        editButton.on('click', function() {
+            // Set values to the form for editing
+            $('#brand').val(brand);
+            $('#serial').val(serial);
+            $('#desc').val(desc);
+            $('#user').val(user);
+            $('#loc').val(loc);
+            $('#dep').val(dep);
+            $('#id').val(id);
+            editingItemNo = count;
+            editingIndex = qrItems.findIndex(item => item.count === count);
+            $('#qrForm button[type=submit]').text('Save');
+            isEditing = true;
+        });
+
+        deleteButton.on('click', function() {
+            qrDiv.remove();
+            deletedItemNos.push(itemNo);
+            qrItems = qrItems.filter(item => item.count !== count);
+            localStorage.setItem('qrItems', JSON.stringify(qrItems)); // Update localStorage
+        });
+
+        return qrDiv;
+    }
+
+    // Reload saved QR codes from localStorage on page load
+    qrItems.forEach(item => {
+        generateQRCode(item.brand, item.serial, item.desc, item.user, item.loc, item.dep, item.count, item.id, item.branchSuffix);
+        itemCount = Math.max(itemCount, item.count + 1);
+    });
+
+    // Function to get the next item number
+    function getNextItemNo(branchSuffix) {
+        let nextItemNo;
+        if (deletedItemNos.length > 0) {
+            nextItemNo = deletedItemNos.pop();
+        } else {
+            nextItemNo = "" + String(itemCount).padStart(5, '0'); 
+            itemCount++;
+        }
+        return nextItemNo;
+    }
+
+    // Form submission handler
+    $('#qrForm').on('submit', function(event) {
+        event.preventDefault();
+        let brand = $('#brand').val();
+        let serial = $('#serial').val();
+        let desc = $('#desc').val();
+        let user = $('#user').val();
+        let loc = $('#loc').val();
+        let dep = $('#dep').val();
+        let id = $('#id').val();
+        let branch = $('#branch').val();
+        let branchSuffix = branch === "P" ? "P" : "S";
+
+        if (isEditing) {
+            let formattedItemNo = editingItemNo;
+            qrItems[editingIndex] = { brand, serial, desc, user, loc, dep, id, count: formattedItemNo, branchSuffix };
+            $('#qrContainer').children().eq(editingIndex).remove();
+            generateQRCode(brand, serial, desc, user, loc, dep, formattedItemNo, id, branchSuffix);
+        } else {
+            let itemNo = getNextItemNo(branchSuffix);
+            let qrItem = { brand, serial, desc, user, loc, dep, id, count: itemNo, branchSuffix };
+            qrItems.push(qrItem);
+            generateQRCode(brand, serial, desc, user, loc, dep, itemNo, id, branchSuffix);
+        }
+
+        localStorage.setItem('qrItems', JSON.stringify(qrItems)); // Save to localStorage after generation
+        $('#qrForm').trigger('reset');
+        $('#qrForm button[type=submit]').text('Generate QR Code');
+        isEditing = false;
+    });
+
+    // Reset form
+    $('#resetBtn').on('click', function() {
+        $('#qrContainer').empty();
+        localStorage.removeItem('qrItems');
+        qrItems = [];
+        itemCount = 1;
+        deletedItemNos = [];
+        resetForm();
+    });
+
+    function resetForm() {
+        $('#qrForm').trigger('reset');
+        $('#qrForm button[type=submit]').text('Generate QR Code');
+        isEditing = false;
+        editingItemNo = null;
+        editingIndex = null;
+    }
+});
+$('#printBtn').on('click', function() {
+    window.print();
+});
+
+        </script>
+</body>
+</html>
