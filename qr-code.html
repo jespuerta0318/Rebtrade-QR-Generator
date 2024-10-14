@@ -194,29 +194,35 @@ form button:hover {
 }
 
 @media (max-width: 480px) {
-    .qr-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center items in the column */
-        margin-top: 100%;
-    }
+    /* Adjust the margin between the form and the QR code section */
+.qr-container {
+    margin-top: 40px; /* Add some margin above the QR code container */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-    .qr-item {
+.qr-item {
     display: inline-block;
     text-align: center;
     margin: 10px;
-    padding: 5px; /* Reduced padding */
+    padding: 5px;
     border: 1px solid #ccc;
     width: 200px;
-    height: 300px; /* Allow flexible height */
+    height: 300px;
     position: relative;
+}
 
-    }
+.qr-code {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    margin-top: 5px;
+    height: 200px;
+}
 
-    .qr-code {
-        width: 100px; /* Reduce QR code size for mobile */
-        height: 100px;
-    }
 
     .header, .subheader, .footer {
         font-size: 12px; /* Adjust font size for smaller screens */
@@ -381,22 +387,22 @@ form button:hover {
 
         <div class="form-group">
             <label for="desc">Description:</label>
-            <input type="text" id="desc" name="desc">
+            <input type="text" id="desc" name="desc" required>
         </div>
 
         <div class="form-group">
             <label for="user">Accountable User:</label>
-            <input type="text" id="user" name="user">
+            <input type="text" id="user" name="user" required>
         </div>
 
         <div class="form-group">
             <label for="loc">Location:</label>
-            <input type="text" id="loc" name="loc">
+            <input type="text" id="loc" name="loc" required>
         </div>
 
         <div class="form-group">
             <label for="dep">Department:</label>
-            <input type="text" id="dep" name="dep">
+            <input type="text" id="dep" name="dep" required>
         </div>
 
         <div class="form-group">
