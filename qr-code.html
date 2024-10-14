@@ -45,70 +45,45 @@
             justify-content: center;
             align-items: center;
         }
-     .form-container {
-    width: 80%;
-    background-color: #fff;
-    border: 10px solid #990000;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 1px;
-    margin-top: 50px;
-}
-
-.form-container h1 {
-    text-align: center;
-    color: #990000;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-form label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    width: 100%;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    width: 48%; /* Makes two columns by setting width */
-    margin-bottom: 20px;
-}
-
-form input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-form button {
-    background-color: #990000;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-form button:hover {
-    background-color: #cc0000;
-}
-
-.button-group {
-    width: 100%;
-    text-align: center;
-}
-
+        .form-container {
+            width: 80%;
+            background-color: #fff;
+            border: 10px solid #990000;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 1px;
+        }
+        .form-container h1 {
+            text-align: center;
+            color: #990000;
+            margin-bottom: 20px;
+        }
+        form label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        form input {
+            width: 97%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        form button {
+            background-color: #990000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        form button:hover {
+            background-color: #cc0000;
+        }
 
         @media (max-width: 768px) {
     .container {
@@ -155,13 +130,12 @@ form button:hover {
         font-size: 14px; /* Smaller button text on extra small screens */
     }
 }
-       .qr-container {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
+        .qr-container {
+            margin-top: 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
         .qr-item {
     display: inline-block;
     text-align: center;
@@ -195,35 +169,29 @@ form button:hover {
 }
 
 @media (max-width: 480px) {
-    /* Adjust the margin between the form and the QR code section */
-.qr-container {
-    margin-top: 40px; /* Add some margin above the QR code container */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+    .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items in the column */
+        margin-top: 100%;
+    }
 
-.qr-item {
-    display: inline-block;
+    .qr-item {
+        display: inline-block;
     text-align: center;
     margin: 10px;
-    padding: 5px;
+    padding: 5px; /* Reduced padding */
     border: 1px solid #ccc;
     width: 200px;
-    height: 300px;
+    height: 300px; /* Allow flexible height */
     position: relative;
-}
 
-.qr-code {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
-    margin-top: 5px;
-    height: 200px;
-}
+    }
 
+    .qr-code {
+        width: 100px; /* Reduce QR code size for mobile */
+        height: 100px;
+    }
 
     .header, .subheader, .footer {
         font-size: 12px; /* Adjust font size for smaller screens */
@@ -266,6 +234,7 @@ form button:hover {
         }
 
         @media print {
+    /* Hide everything except the QR templates */
     body, html {
         background-color: #fff;
         margin: 0;
@@ -279,20 +248,11 @@ form button:hover {
     .qr-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 4 QR codes per row */
-        grid-gap: 10px;
+        grid-gap: 10px; /* Space between QR code cards */
         margin: 10px;
         padding: 0;
     }
-}
- /* Only apply minimal changes, try not to hide entire sections at first */
-    .container, .form-container, form, button {
-        visibility: hidden; /* Change to visibility: hidden instead of display: none */
-    }
 
-    .qr-container {
-        visibility: visible;
-    }
-}
     .qr-item {
         display: inline-block;
         page-break-inside: avoid; /* Prevent splitting across pages */
@@ -342,20 +302,18 @@ form button:hover {
 .back-arrow {
     position: absolute;
     top: 1px;
-    right: 5px;
-    z-index: 1000; /* Ensure it is above other elements */
+    right: 20px;
+    z-index: 900; /* Ensure it is above other elements */
 }
 
 .back-arrow a {
     font-size: 13px;
-    color: white; /* Match your theme color */
+    color: #990000; /* Match your theme color */
     text-decoration: none; /* Remove underline */
     padding: 10px; /* Add some padding for better clickability */
-/*     border: 2px solid #990000; */
-    border-radius: 1px;
+    /* border: 2px solid #990000;
+    border-radius: 5px; */
     transition: background-color 0.3s; /* Transition for hover effect */
-    background-color: red;
-
 }
 
 .back-arrow a:hover {
@@ -380,62 +338,45 @@ form button:hover {
 
         <!-- Right Side: QR Form -->
         <div class="right-side">
-         <div class="form-container">
-<div class="back-arrow">
-        <a href="index.html">&#8592; Back to Homepage</a>
-    </div>
-    <h1>QR Code Generator</h1>
-    <form id="qrForm">
-        <div class="form-group">
-            <label for="branch">Select Branch:</label>
-            <select id="branch">
-                <option value="Pulilan Rebtrade">Pulilan Rebtrade</option>
-                <option value="Ortigas Sales Rebtrade">Ortigas Sales Rebtrade</option>
-            </select>
-        </div>
+            <div class="form-container">
+                <div class="back-arrow">
+                    <a href="index.html">&#8592; Back to Homepage</a>
+                </div>
+                <h1>QR Code Generator</h1>
+                 <!-- Branch Selection Dropdown -->
+                 <label for="branch" style="font-weight: bold;">Select Branch:</label>
+                 <select id="branch" class="branch-select">
+                     <option value="P">Pulilan Rebtrade</option>
+                     <option value="S">Ortigas Sales Rebtrade</option>
+                 </select>
+                <form id="qrForm">
+                    <label for="desc">Description:</label>
+                    <input type="text" id="desc" name="desc" required><br><br>
 
-        <div class="form-group">
-            <label for="desc">Description:</label>
-            <input type="text" id="desc" name="desc" required>
-        </div>
+                    <label for="user">Accountable User:</label>
+                    <input type="text" id="user" name="user" required><br><br>
 
-        <div class="form-group">
-            <label for="user">Accountable User:</label>
-            <input type="text" id="user" name="user" required>
-        </div>
+                    <label for="loc">Location:</label>
+                    <input type="text" id="loc" name="loc" required><br><br>
 
-        <div class="form-group">
-            <label for="loc">Location:</label>
-            <input type="text" id="loc" name="loc" required>
-        </div>
+                    <label for="dep">Department:</label>
+                    <input type="text" id="dep" name="dep" required><br><br>
 
-        <div class="form-group">
-            <label for="dep">Department:</label>
-            <input type="text" id="dep" name="dep" required>
-        </div>
+                    <label for="serial">Serial No:</label>
+                    <input type="text" id="serial" name="serial" required><br><br>
 
-        <div class="form-group">
-            <label for="serial">Serial No:</label>
-            <input type="text" id="serial" name="serial">
-        </div>
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required><br><br>
 
-        <div class="form-group">
-            <label for="brand">Brand:</label>
-            <input type="text" id="brand" name="brand">
-        </div>
+                    <label for="id">Product ID:</label>
+                    <input type="text" id="id" name="id" required><br><br>
 
-        <div class="form-group">
-            <label for="id">Product ID:</label>
-            <input type="text" id="id" name="id">
+                    <button type="submit">Generate QR Code</button>
+                    <button type="button" id="printBtn">Print QR Codes</button>
+                    <button type="button" id="resetBtn">Reset</button>
+                </form>
+            </div>
         </div>
-
-        <div class="button-group">
-            <button type="submit">Generate QR Code</button>
-            <button type="button" id="printBtn">Print QR Codes</button>
-            <button type="reset" id="resetBtn">Reset</button>
-        </div>
-    </form>
-</div>
     </div>
 
     <div class="qr-container print-area" id="qrContainer"></div>
