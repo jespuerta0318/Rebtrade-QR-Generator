@@ -155,12 +155,13 @@ form button:hover {
         font-size: 14px; /* Smaller button text on extra small screens */
     }
 }
-        .qr-container {
-            margin-top: 28%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+       .qr-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
         .qr-item {
     display: inline-block;
     text-align: center;
@@ -265,7 +266,6 @@ form button:hover {
         }
 
         @media print {
-    /* Hide everything except the QR templates */
     body, html {
         background-color: #fff;
         margin: 0;
@@ -279,11 +279,20 @@ form button:hover {
     .qr-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 4 QR codes per row */
-        grid-gap: 10px; /* Space between QR code cards */
+        grid-gap: 10px;
         margin: 10px;
         padding: 0;
     }
+}
+ /* Only apply minimal changes, try not to hide entire sections at first */
+    .container, .form-container, form, button {
+        visibility: hidden; /* Change to visibility: hidden instead of display: none */
+    }
 
+    .qr-container {
+        visibility: visible;
+    }
+}
     .qr-item {
         display: inline-block;
         page-break-inside: avoid; /* Prevent splitting across pages */
