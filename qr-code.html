@@ -351,6 +351,7 @@
                  <select id="branch" class="branch-select">
                      <option value="P">Pulilan Rebtrade</option>
                      <option value="S">Ortigas Sales Rebtrade</option>
+                     <option value="O">One Rebtrade</option>
                  </select>
                 <form id="qrForm">
                     <label for="desc">Description:</label>
@@ -472,7 +473,7 @@ $(document).ready(function() {
         let dep = $('#dep').val();
         let id = $('#id').val();
         let branch = $('#branch').val();
-        let branchSuffix = branch === "P" ? "P" : "S";
+        let branchSuffix = branch === "P" ? "P" : "S" : "O";
 
         if (isEditing) {
             let formattedItemNo = editingItemNo;
