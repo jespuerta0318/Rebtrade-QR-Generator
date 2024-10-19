@@ -315,6 +315,7 @@
     /* border: 2px solid #990000;
     border-radius: 5px; */
     transition: background-color 0.3s; /* Transition for hover effect */
+    background-color: red; 
 }
 
 .back-arrow a:hover {
@@ -329,14 +330,38 @@
     </style>
 </head>
 <body>
-   
-    
     <div class="container">
         <!-- Left Side: Logo -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <div class="left-side">
             <div class="logo">Rebtrade International Corporation</div>
             <p> Don't Have QR Scanner? <a href="https://play.google.com/store/apps/details?id=com.gamma.scan&hl=en-US" target="_blank">
-<strong style="color: white; font-weight: 20px;">Click Here</strong></a></p> 
+            <strong style="color: white; font-weight: 20px;">Click Here</strong></a></p> 
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
         </div>
 
         <!-- Right Side: QR Form -->
@@ -381,13 +406,12 @@
             </div>
         </div>
     </div>
-
     <div class="qr-container print-area" id="qrContainer"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <script>
+<script>
 $(document).ready(function() {
     let itemCount = 1; // Counter for item numbers
     let qrItems = JSON.parse(localStorage.getItem('qrItems')) || []; // Load from localStorage
@@ -514,6 +538,6 @@ $('#printBtn').on('click', function() {
     window.print();
 });
 
-        </script>
+</script>
 </body>
 </html>
