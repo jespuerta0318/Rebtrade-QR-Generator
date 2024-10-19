@@ -342,7 +342,12 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
+.modalbtn{
+    background-color: red;
+    color: white;
+    width: 50px;
+    cursor: pointer;
+}
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
@@ -352,11 +357,7 @@
   width: 80%; /* Could be more or less, depending on screen size */
   color: black;
 }
-.left-side button{
-background-color: red;
-color: white;
-width: 50px;
-}
+
 /* The Close Button */
 .close {
   color: #aaa;
@@ -382,7 +383,7 @@ width: 50px;
             <strong style="color: white; font-weight: 20px;">Click Here</strong></a></p> 
 
 <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+<button id="myBtn" class="modalbtn">Open Modal</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -395,7 +396,6 @@ width: 50px;
     <p><strong>2.</strong>Put N/A if not applicable</p>
     <p><strong>3.</strong>Select Generate QR code</p>
   </div>
-
 </div>
         </div>
 
